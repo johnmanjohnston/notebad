@@ -8,26 +8,46 @@
         Title="Notebad" Height="1080" Width="1920"
         Background="#222231"
         >
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="#EEEEEF"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid>
             <TextBox 
+                AcceptsTab="True"
                 FontFamily="JetBrains Mono"
-                FontSize="34"
-                Padding="10"
+                FontSize="30"
+                Padding="18"
                 Background="#111120"
                 Foreground="#FFFFFF"
-                Height="1000" Width="1920" VerticalAlignment="Center"
+                Height="985" Width="1920" VerticalAlignment="Center"
                 Name="tbMultiLine"
-                TextWrapping="Wrap"
+                TextWrapping="NoWrap"
                 AcceptsReturn="True"
-                VerticalScrollBarVisibility="Visible"
+                VerticalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Auto"
+                BorderThickness="0"
                 >
+
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type ScrollBar}">
+                        <Setter Property="Background" Value="#000012"/>
+                        <Setter Property="Opacity" Value="0.2"/>
+                    </Style>
+                </TextBox.Resources>
+
                 Notebad--
             </TextBox>
         </Grid>
-
-        <Grid>
-            
+        
+        <Grid Height="40" Background="#000011" VerticalAlignment="Bottom">
+            <Grid VerticalAlignment="Center">
+                <Label FontSize="16" Margin="10,0,-10,0">Language Mode: Text</Label>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
