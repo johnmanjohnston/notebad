@@ -11,26 +11,29 @@
 
     <Window.Resources>
         <Style TargetType="{x:Type Label}">
-            <Setter Property="Foreground" Value="#EEEEEF"/>
+            <Setter Property="Foreground" Value="#DDDDFF"/>
+            <Setter Property="FontFamily" Value="JetBrains Mono"/>
         </Style>
     </Window.Resources>
 
-    <Grid>
+    <Grid >
         <Grid>
             <TextBox 
                 AcceptsTab="True"
                 FontFamily="JetBrains Mono"
                 FontSize="30"
-                Padding="18"
+                Padding="70 40"
                 Background="#111120"
-                Foreground="#FFFFFF"
+                Foreground="#EEEEFF"
                 Height="985" Width="1920" VerticalAlignment="Center"
-                Name="tbMultiLine"
                 TextWrapping="NoWrap"
                 AcceptsReturn="True"
                 VerticalScrollBarVisibility="Auto"
                 HorizontalScrollBarVisibility="Auto"
                 BorderThickness="0"
+                Panel.ZIndex="2"
+                TextChanged="TextboxChange"
+                x:Name="textboxmain"
                 >
 
                 <TextBox.Resources>
@@ -38,9 +41,7 @@
                         <Setter Property="Background" Value="#000012"/>
                         <Setter Property="Opacity" Value="0.2"/>
                     </Style>
-                </TextBox.Resources>
-
-                Notebad--
+                </TextBox.Resources> This is demo text!
             </TextBox>
         </Grid>
         

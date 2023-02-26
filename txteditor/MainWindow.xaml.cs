@@ -24,5 +24,10 @@ namespace txteditor
         {
             InitializeComponent();
         }
+
+        public void TextboxChange(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
