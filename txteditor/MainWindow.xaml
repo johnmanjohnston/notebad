@@ -1,0 +1,33 @@
+﻿<Window x:Class="txteditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:txteditor"
+        mc:Ignorable="d"
+        Title="Notebad" Height="1080" Width="1920"
+        Background="#222231"
+        >
+    <Grid>
+        <Grid>
+            <TextBox 
+                FontFamily="JetBrains Mono"
+                FontSize="34"
+                Padding="10"
+                Background="#111120"
+                Foreground="#FFFFFF"
+                Height="1000" Width="1920" VerticalAlignment="Center"
+                Name="tbMultiLine"
+                TextWrapping="Wrap"
+                AcceptsReturn="True"
+                VerticalScrollBarVisibility="Visible"
+                >
+                Notebad--
+            </TextBox>
+        </Grid>
+
+        <Grid>
+            
+        </Grid>
+    </Grid>
+</Window>
