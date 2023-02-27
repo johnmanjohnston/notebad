@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Notebad" Height="1080" Width="1920"
         Background="#222231"
+        WindowState="Maximized"
         >
 
     <Window.Resources>
