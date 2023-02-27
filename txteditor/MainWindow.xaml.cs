@@ -27,7 +27,8 @@ namespace txteditor
 
         public void TextboxChange(object sender, TextChangedEventArgs e)
         {
-
+            if (linecounterlabel != null && textboxmain != null)
+            linecounterlabel.Text = textboxmain.LineCount.ToString() + " Lines";
         }
     }
 }
