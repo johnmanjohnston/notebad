@@ -23,17 +23,16 @@
                 AcceptsTab="True"
                 FontFamily="JetBrains Mono"
                 FontSize="30"
-                Padding="70 0"
+                Padding="70 30"
                 Background="#111120"
                 Foreground="#EEEEFF"
-                Height="985" Width="1920" VerticalAlignment="Top"
+                Height="973" Width="1920" VerticalAlignment="Top"
                 TextWrapping="NoWrap"
                 AcceptsReturn="True"
                 VerticalScrollBarVisibility="Auto"
                 HorizontalScrollBarVisibility="Auto"
                 BorderThickness="0"
                 Panel.ZIndex="1"
-                TextChanged="TextboxChange"
                 x:Name="textboxmain" Margin="0,41,0,0"
                 >
 
@@ -42,13 +41,13 @@
                         <Setter Property="Background" Value="#000012"/>
                         <Setter Property="Opacity" Value="0.2"/>
                     </Style>
-                </TextBox.Resources> This is demo text!
+                </TextBox.Resources>
             </TextBox>
         </Grid>
 
         <Grid Height="40" Background="#000011" VerticalAlignment="Bottom">
             <Grid VerticalAlignment="Center">
-                <TextBlock Opacity="0.5" Foreground="#FFFFFF" x:Name="linecounterlabel"  FontSize="16" Margin="10,0,-10,0">## Lines</TextBlock>
+                <TextBlock Opacity="0.5" Foreground="#FFFFFF" x:Name="linecounterlabel"  FontSize="16" Margin="10,0,-10,0">1 Line(s)</TextBlock>
             </Grid>
         </Grid>
     </Grid>
