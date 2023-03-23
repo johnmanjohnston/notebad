@@ -17,7 +17,11 @@
         </Style>
     </Window.Resources>
 
-    <Grid >
+    <Grid>
+        <Button Name="savebtn"  Background="#333343" Foreground="#E5E5E5" Margin="0,0,1834,1023">Save</Button>
+        <Button Name="saveasbtn" Background="#333343" Foreground="#E5E5E5" Margin="91,0,1725,1023">Save As</Button>
+        <Button Name="openbtn"  Background="#333343" Foreground="#E5E5E5" Margin="200,0,1631,1023">Open</Button>
+
         <Grid>
             <TextBox 
                 AcceptsTab="True"
@@ -47,7 +51,8 @@
 
         <Grid Height="40" Background="#000011" VerticalAlignment="Bottom">
             <Grid VerticalAlignment="Center">
-                <TextBlock Opacity="0.5" Foreground="#FFFFFF" x:Name="linecounterlabel"  FontSize="16" Margin="10,0,-10,0">1 Line(s)</TextBlock>
+                <TextBlock Opacity="0.5" Foreground="#FFFFFF" x:Name="linecounterlabel"  FontSize="16" Margin="10,0,-10,0">1 Line</TextBlock>
+                <TextBlock Opacity="0.5" Foreground="#FFFFFF" x:Name="savelabel"  FontSize="16" Margin="132,0,-132,0">No file loaded</TextBlock>
             </Grid>
         </Grid>
     </Grid>
