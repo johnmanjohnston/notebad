@@ -27,10 +27,14 @@ namespace txteditor
             this.SizeChanged += WindowSizeChanged;
             this.textboxmain.TextChanged += TextboxChange;
             this.KeyDown += OnKeyDown;
+            this.KeyDown += TextboxScroll;
+            this.MouseWheel += TextboxScroll;
 
             this.savebtn.Click += Save;
             this.saveasbtn.Click += SaveAs;
             this.openbtn.Click += Open;
+
+            this.textboxmain.Text = string.Empty;
         }
 
         public void TextboxChange(object sender, TextChangedEventArgs e)
@@ -48,7 +52,20 @@ namespace txteditor
                 if (lCount != 1) { linecounterlabel.Text += "s"; }
 
                 savelabel.Text = "Unsaved Changes";
+
+                sidelinecoutner.Text = string.Empty;
+                for (int i = 1; i <= lCount; i++) 
+                {
+                    sidelinecoutner.Text += $"{i}\n";
+                }
+
+                sidelinecounterscroll.ScrollToVerticalOffset(textboxmain.VerticalOffset);
             }
+        }
+
+        private void TextboxScroll(object sender, EventArgs e) 
+        {
+             sidelinecounterscroll.ScrollToVerticalOffset(textboxmain.VerticalOffset);
         }
 
         private void WindowSizeChanged(object sender, SizeChangedEventArgs e)
@@ -64,11 +81,13 @@ namespace txteditor
                 if (Keyboard.IsKeyDown(Key.OemPlus)) 
                 {
                     textboxmain.FontSize += 2;
+                    sidelinecoutner.FontSize += 2;
                 }
 
                 if (Keyboard.IsKeyDown(Key.OemMinus)) 
                 {
                     textboxmain.FontSize -= 2; 
+                    sidelinecoutner.FontSize -= 2;
                 }
             }
         }
@@ -100,8 +119,13 @@ namespace txteditor
                 string filePath = dialog.FileName;
                 textboxmain.Text = File.ReadAllText(filePath);
                 currentFilePath = filePath;
-                savelabel.Text = "Saved";
+                savelabel.Text = "Unchanged";
             }
+        }
+
+        private void textboxmain_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+             sidelinecounterscroll.ScrollToVerticalOffset(textboxmain.VerticalOffset);
         }
     }
 }

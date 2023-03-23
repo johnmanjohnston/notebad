@@ -18,15 +18,21 @@
     </Window.Resources>
 
     <Grid>
-        <Button Name="savebtn"  Background="#333343" Foreground="#E5E5E5" Margin="0,0,1834,1023">Save</Button>
+        <Button Panel.ZIndex="3" Name="savebtn"  Background="#333343" Foreground="#E5E5E5" Margin="0,0,1834,1023">Save</Button>
         <Button Name="saveasbtn" Background="#333343" Foreground="#E5E5E5" Margin="91,0,1725,1023">Save As</Button>
         <Button Name="openbtn"  Background="#333343" Foreground="#E5E5E5" Margin="200,0,1631,1023">Open</Button>
 
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="109*"/>
+                <RowDefinition Height="956*"/>
+            </Grid.RowDefinitions>
+
             <TextBox 
+                ScrollViewer.ScrollChanged="textboxmain_ScrollChanged"
                 AcceptsTab="True"
                 FontFamily="JetBrains Mono"
-                FontSize="30"
+                FontSize="28"
                 Padding="70 30"
                 Background="#111120"
                 Foreground="#EEEEFF"
@@ -37,9 +43,9 @@
                 HorizontalScrollBarVisibility="Auto"
                 BorderThickness="0"
                 Panel.ZIndex="1"
-                x:Name="textboxmain" Margin="0,41,0,0"
+                x:Name="textboxmain" Margin="67,41,-67,0" Grid.RowSpan="2"
                 >
-
+                This is some demo text
                 <TextBox.Resources>
                     <Style TargetType="{x:Type ScrollBar}">
                         <Setter Property="Background" Value="#000012"/>
@@ -47,6 +53,14 @@
                     </Style>
                 </TextBox.Resources>
             </TextBox>
+
+            
+            <ScrollViewer Name="sidelinecounterscroll" Grid.RowSpan="2">
+                <TextBlock FontFamily="JetBrains Mono"  Padding="0 30" TextWrapping="WrapWithOverflow" Name="sidelinecoutner" FontSize="28" Foreground="#FFFFFF" Width="118" Margin="0,41,1771,-41">
+                   123
+                </TextBlock>
+            </ScrollViewer>
+
         </Grid>
 
         <Grid Height="40" Background="#000011" VerticalAlignment="Bottom">
