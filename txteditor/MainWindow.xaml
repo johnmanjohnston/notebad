@@ -19,8 +19,9 @@
 
     <Grid>
         <Button Panel.ZIndex="3" Name="savebtn"  Background="#333343" Foreground="#E5E5E5" Margin="0,0,1834,1023">Save</Button>
-        <Button Name="saveasbtn" Background="#333343" Foreground="#E5E5E5" Margin="91,0,1725,1023">Save As</Button>
-        <Button Name="openbtn"  Background="#333343" Foreground="#E5E5E5" Margin="200,0,1631,1023">Open</Button>
+        <Button Panel.ZIndex="3" Name="saveasbtn" Background="#333343" Foreground="#E5E5E5" Margin="91,0,1725,1023">Save As</Button>
+        <Button Panel.ZIndex="3" Name="openbtn"  Background="#333343" Foreground="#E5E5E5" Margin="200,0,1631,1023">Open</Button>
+        <Button Panel.ZIndex="3" Name="newbtn"  Background="#333343" Foreground="#E5E5E5" Margin="294,0,1554,1023">New</Button>
 
         <Grid>
             <Grid.RowDefinitions>
@@ -55,8 +56,8 @@
             </TextBox>
 
             
-            <ScrollViewer Name="sidelinecounterscroll" Grid.RowSpan="2">
-                <TextBlock FontFamily="JetBrains Mono"  Padding="0 30" TextWrapping="WrapWithOverflow" Name="sidelinecoutner" FontSize="28" Foreground="#FFFFFF" Width="118" Margin="0,41,1771,-41">
+            <ScrollViewer Name="sidelinecounterscroll" Grid.RowSpan="2" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
+                <TextBlock FontFamily="JetBrains Mono"  Padding="0 30" TextWrapping="WrapWithOverflow" Name="sidelinecoutner" FontSize="28" Foreground="#BBBBCE" Width="118" Margin="0,41,1771,-41">
                    123
                 </TextBlock>
             </ScrollViewer>

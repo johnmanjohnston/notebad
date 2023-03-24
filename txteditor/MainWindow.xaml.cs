@@ -20,10 +20,14 @@ namespace txteditor
     public partial class MainWindow : Window
     {
         private string? currentFilePath = null;
+        bool saved = false;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            saved = false;
+
             this.SizeChanged += WindowSizeChanged;
             this.textboxmain.TextChanged += TextboxChange;
             this.KeyDown += OnKeyDown;
@@ -33,6 +37,7 @@ namespace txteditor
             this.savebtn.Click += Save;
             this.saveasbtn.Click += SaveAs;
             this.openbtn.Click += Open;
+            this.newbtn.Click += New;
 
             this.textboxmain.Text = string.Empty;
         }
@@ -41,7 +46,7 @@ namespace txteditor
         {
             if (linecounterlabel != null && textboxmain != null)
             {
-                if (currentFilePath == null) 
+                if (currentFilePath == null)
                 {
                     savelabel.Text = "Unsaved Changes";
                 }
@@ -52,9 +57,10 @@ namespace txteditor
                 if (lCount != 1) { linecounterlabel.Text += "s"; }
 
                 savelabel.Text = "Unsaved Changes";
+                saved = false;
 
                 sidelinecoutner.Text = string.Empty;
-                for (int i = 1; i <= lCount; i++) 
+                for (int i = 1; i <= lCount; i++)
                 {
                     sidelinecoutner.Text += $"{i}\n";
                 }
@@ -63,9 +69,9 @@ namespace txteditor
             }
         }
 
-        private void TextboxScroll(object sender, EventArgs e) 
+        private void TextboxScroll(object sender, EventArgs e)
         {
-             sidelinecounterscroll.ScrollToVerticalOffset(textboxmain.VerticalOffset);
+            sidelinecounterscroll.ScrollToVerticalOffset(textboxmain.VerticalOffset);
         }
 
         private void WindowSizeChanged(object sender, SizeChangedEventArgs e)
@@ -74,27 +80,27 @@ namespace txteditor
             textboxmain.Width = e.NewSize.Width - 19;
         }
 
-        private void OnKeyDown(object sender, KeyEventArgs e) 
+        private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control) 
+            if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
             {
-                if (Keyboard.IsKeyDown(Key.OemPlus)) 
+                if (Keyboard.IsKeyDown(Key.OemPlus))
                 {
                     textboxmain.FontSize += 2;
                     sidelinecoutner.FontSize += 2;
                 }
 
-                if (Keyboard.IsKeyDown(Key.OemMinus)) 
+                if (Keyboard.IsKeyDown(Key.OemMinus))
                 {
-                    textboxmain.FontSize -= 2; 
+                    textboxmain.FontSize -= 2;
                     sidelinecoutner.FontSize -= 2;
                 }
             }
         }
 
-        private void Save(object sender, EventArgs e) 
+        private void Save(object sender, EventArgs e)
         {
-            if (currentFilePath == null) 
+            if (currentFilePath == null)
             {
                 MessageBox.Show("No file loaded :/");
                 return;
@@ -102,25 +108,42 @@ namespace txteditor
 
             File.WriteAllText(currentFilePath, textboxmain.Text);
             savelabel.Text = "Saved";
+            saved = true;
         }
 
-        private void SaveAs(object sender, EventArgs e) 
+        private void SaveAs(object sender, EventArgs e)
         {
         }
 
-        private void Open(object sender, EventArgs e) 
+        private void Open(object sender, EventArgs e)
         {
             var dialog = new OpenFileDialog();
 
             bool? res = dialog.ShowDialog();
 
-            if (res == true) 
+            if (res == true)
             {
                 string filePath = dialog.FileName;
                 textboxmain.Text = File.ReadAllText(filePath);
                 currentFilePath = filePath;
                 savelabel.Text = "Unchanged";
+                saved = true;
             }
+        }
+
+        private void New(object sender, EventArgs e) 
+        {
+            if (!saved && textboxmain.Text != string.Empty) 
+            {
+                MessageBox.Show("You have unsaved changes, save before creating a new file!", 
+                                "Notebad - Unsaved Changes", 
+                                MessageBoxButton.OK, 
+                                MessageBoxImage.Exclamation);
+                return;
+            }
+
+            textboxmain.Text = string.Empty; 
+            currentFilePath = null;
         }
 
         private void textboxmain_ScrollChanged(object sender, ScrollChangedEventArgs e)
