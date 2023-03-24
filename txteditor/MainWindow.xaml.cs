@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using txteditor.Utility;
 
 namespace txteditor
 {
@@ -117,6 +118,12 @@ namespace txteditor
 
         private void Open(object sender, EventArgs e)
         {
+            if (!saved && textboxmain.Text != string.Empty) 
+            {
+                StaticUtility.UnsavedWarning();
+                return;
+            }
+
             var dialog = new OpenFileDialog();
 
             bool? res = dialog.ShowDialog();
@@ -135,10 +142,7 @@ namespace txteditor
         {
             if (!saved && textboxmain.Text != string.Empty) 
             {
-                MessageBox.Show("You have unsaved changes, save before creating a new file!", 
-                                "Notebad - Unsaved Changes", 
-                                MessageBoxButton.OK, 
-                                MessageBoxImage.Exclamation);
+                StaticUtility.UnsavedWarning();
                 return;
             }
 
